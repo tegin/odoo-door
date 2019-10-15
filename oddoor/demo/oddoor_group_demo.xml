@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="group_employees" model="oddoor.group">
+        <field name="name">Employees</field>
+    </record>
+    <record id="group_premium" model="oddoor.group">
+        <field name="name">Premium Locks</field>
+        <field name="parent_ids" eval="[(4, ref('oddoor.group_employees'))]"/>
+    </record>
+    <record id="group_standard" model="oddoor.group">
+        <field name="name">Standard Locks</field>
+        <field name="parent_ids" eval="[(4, ref('oddoor.group_employees'))]"/>
+    </record>
+    <record id="group_room_101" model="oddoor.group">
+        <field name="name">Room 101</field>
+        <field name="parent_ids" eval="[(4, ref('oddoor.group_standard'))]"/>
+    </record>
+    <record id="group_room_102" model="oddoor.group">
+        <field name="name">Room 102</field>
+        <field name="parent_ids" eval="[(4, ref('oddoor.group_standard'))]"/>
+    </record>
+</odoo>

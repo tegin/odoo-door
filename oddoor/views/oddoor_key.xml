@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019 Creu Blanca
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record model="ir.ui.view" id="oddoor_key_form_view">
+        <field name="name">oddoor.key.form (in oddoor)</field>
+        <field name="model">oddoor.key</field>
+        <field name="arch" type="xml">
+            <form>
+                <header/>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button" options="{&quot;terminology&quot;: &quot;archive&quot;}"/>
+                        </button>
+                        <button name="view_actions" type="object" icon="fa-bars" groups="oddoor.group_oddoor_user" string="Actions"/>
+                    </div>
+                    <group>
+                        <field name="name"/>
+                        <field name="unique_virtual_key"/>
+                        <field name="expiration_date"/>
+                    </group>
+                    <group>
+                        <field name="group_ids" widget="many2many_tags"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="oddoor_key_search_view">
+        <field name="name">oddoor.key.search (in oddoor)</field>
+        <field name="model">oddoor.key</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="unique_virtual_key"/>
+                <!-- TODO: Add filters for expired not expired and add not expired as default-->
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="oddoor_key_tree_view">
+        <field name="name">oddoor.key.tree (in oddoor)</field>
+        <field name="model">oddoor.key</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="unique_virtual_key"/>
+                <field name="expiration_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="oddoor_key_act_window">
+        <field name="name">Oddoor Key</field>
+        <field name="res_model">oddoor.key</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <record model="ir.ui.menu" id="oddoor_key_menu">
+        <field name="name">Keys</field>
+        <field name="parent_id" ref="oddoor_menu"/>
+        <field name="action" ref="oddoor_key_act_window"/>
+        <field name="sequence" eval="25"/>
+    </record>
+
+</odoo>

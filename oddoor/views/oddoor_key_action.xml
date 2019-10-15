@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019 Creu Blanca
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record model="ir.ui.view" id="oddoor_key_action_form_view">
+        <field name="name">oddoor.key.action.form (in oddoor)</field>
+        <field name="model">oddoor.key.action</field>
+        <field name="arch" type="xml">
+            <form delete="0" create="0" edit="0">
+                <header/>
+                <sheet>
+                    <group>
+                        <field name="lock_id"/>
+                        <field name="key_id"/>
+                        <field name="create_date"/>
+                        <field name="result"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="oddoor_key_action_search_view">
+        <field name="name">oddoor.key.action.search (in oddoor)</field>
+        <field name="model">oddoor.key.action</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="create_date"/>
+                <field name="lock_id"/>
+                <field name="key_id"/>
+                <field name="result"/>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="oddoor_key_action_tree_view">
+        <field name="name">oddoor.key.action.tree (in oddoor)</field>
+        <field name="model">oddoor.key.action</field>
+        <field name="arch" type="xml">
+            <tree delete="0" create="0">
+                <field name="create_date"/>
+                <field name="lock_id"/>
+                <field name="key_id"/>
+                <field name="result"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="oddoor_key_action_act_window">
+        <field name="name">Oddoor Key Action</field>
+        <field name="res_model">oddoor.key.action</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+</odoo>

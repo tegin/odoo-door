@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="group_surgical" model="oddoor.group">
+        <field name="name">Surgical</field>
+    </record>
+
+</odoo>

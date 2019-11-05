@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019 Creu Blanca
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record model="ir.ui.view" id="medical_encounter_view_form">
+        <field name="name">medical.encounter.form (in oddor_encounter)</field>
+        <field name="model">medical.encounter</field>
+        <field name="inherit_id" ref="medical_administration_encounter.medical_encounter_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <field name="door_key" invisible="1"/>
+                <button string="Generate Surgical Key" type="object" name="generate_surgical_key"
+                        class="oe_highlight" attrs="{'invisible': ['|', ('door_key', '!=', False), ('state', '!=', 'in-progress')]}"/>
+            </xpath>
+            <div name="button_box" position="inside">
+                <button name="print_surgical_label" class="oe_stat_button"
+                        icon="fa-qrcode" type="object" string="Print Surgical QR"
+                        attrs="{'invisible': [('door_key', '=', False)]}">
+                </button>
+            </div>
+        </field>
+    </record>
+
+</odoo>

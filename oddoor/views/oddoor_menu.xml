@@ -4,8 +4,10 @@
 
 <odoo>
 
-    <record model="ir.ui.menu" id="oddoor_menu">
-        <field name="name">Oddoor</field>
-    </record>
+    <menuitem
+        name="Oddoor"
+        id="oddoor_menu"
+        web_icon="oddoor,static/description/icon.png"
+    />
 
 </odoo>

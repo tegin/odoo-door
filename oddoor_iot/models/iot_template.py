@@ -5,18 +5,15 @@ from odoo import api, models
 
 
 class IotTemplate(models.Model):
-    _inherit = 'iot.template'
+    _inherit = "iot.template"
 
     @api.multi
     def _get_keys(self, serial):
         result = super()._get_keys(serial)
-        if self == self.env.ref('oddoor_iot.oddoor_template'):
-            lock = self.env['oddoor.lock'].create({
-                'name': serial
-            })
-            result.update({
-                'lock_id': lock.id,
-            })
+        if self == self.env.ref("oddoor_iot.oddoor_template"):
+            lock = self.env["oddoor.lock"].create({"name": serial})
+            result.update({"lock_id": lock.id})
         import logging
+
         logging.info(result)
         return result

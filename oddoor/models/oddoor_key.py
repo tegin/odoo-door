@@ -16,9 +16,10 @@ class OddoorKey(models.Model):
         readonly=True, default="/", required=True,
     )
     expiration_date = fields.Datetime()
-    group_ids = fields.Many2many("oddoor.group", string="Groups",)
-    action_ids = fields.One2many("oddoor.key.action", inverse_name="key_id",)
-    active = fields.Boolean(default=True, required=True)
+    group_ids = fields.Many2many("oddoor.group", string="Groups")
+    action_ids = fields.One2many("oddoor.key.action", inverse_name="key_id")
+    active = fields.Boolean(default=True)
+    partner_id = fields.Many2one("res.partner")
 
     @api.model
     def _get_unique_virtual_key(self, vals):

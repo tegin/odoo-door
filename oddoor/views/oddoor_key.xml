@@ -33,6 +33,7 @@
                     <group>
                         <field name="name" />
                         <field name="unique_virtual_key" />
+                        <field name="partner_id" />
                         <field name="expiration_date" />
                     </group>
                     <group>

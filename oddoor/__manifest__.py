@@ -18,6 +18,7 @@
         "views/oddoor_group.xml",
         "views/oddoor_key.xml",
         "views/oddoor_lock.xml",
+        "views/res_partner.xml",
     ],
     "demo": [
         "security/security_demo.xml",

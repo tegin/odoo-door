@@ -2,10 +2,14 @@
 <!-- Copyright 2019 Creu Blanca
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 <odoo>
+    <record model="ir.ui.view" id="hr_attendance_rfid.view_employee_form_add_rfid">
+        <field name="groups_id" eval="[(4, ref('oddoor.group_oddoor_user'))]" />
+    </record>
     <record model="ir.ui.view" id="hr_employee_form_view">
         <field name="name">hr.employee.form (in oddoor_employee_rfid)</field>
         <field name="model">hr.employee</field>
         <field name="inherit_id" ref="hr_attendance_rfid.view_employee_form_add_rfid" />
+        <field name="groups_id" eval="[(4, ref('oddoor.group_oddoor_user'))]" />
         <field name="arch" type="xml">
             <field name="rfid_card_code" position="after">
                 <button
@@ -18,6 +22,12 @@
                 <field
                     name="oddoor_key_id"
                     groups="hr_attendance.group_hr_attendance_manager"
+                    attrs="{'invisible': [('oddoor_key_id', '=', False)]}"
+                />
+                <field name="oddoor_key_ids" invisible="1" />
+                <field
+                    name="group_ids"
+                    widget="many2many_tags"
                     attrs="{'invisible': [('oddoor_key_id', '=', False)]}"
                 />
             </field>

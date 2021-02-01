@@ -33,7 +33,8 @@
                     <group>
                         <field name="name" />
                         <field name="unique_virtual_key" />
-                        <field name="partner_id" />
+                        <field name="res_id" invisible="1" />
+                        <field name="res_model" invisible="1" />
                         <field name="expiration_date" />
                     </group>
                     <group>

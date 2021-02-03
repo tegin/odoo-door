@@ -11,6 +11,7 @@
     "website": "www.creublanca.es",
     "depends": ["base"],
     "data": [
+        "wizards/oddoor_key_wizard.xml",
         "security/security.xml",
         "security/ir.model.access.csv",
         "views/oddoor_key_action.xml",
@@ -18,6 +19,7 @@
         "views/oddoor_group.xml",
         "views/oddoor_key.xml",
         "views/oddoor_lock.xml",
+        "views/res_partner.xml",
     ],
     "demo": [
         "security/security_demo.xml",

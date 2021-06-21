@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2019 Creu Blanca
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record model="ir.ui.view" id="iot_device_input_form_view">
+        <field name="name">iot.device.input.form (in oddoor_iot)</field>
+        <field name="model">iot.device.input</field>
+        <field name="inherit_id" ref="iot_input_oca.iot_device_input_form" />
+        <field name="arch" type="xml">
+            <field name="call_function" position="after">
+                <field
+                    name="lock_id"
+                    attrs="{'invisible': ['|', ('call_model_id', '!=', False), ('call_function', 'not in', ['call_lock', 'call_lock_values'])], 'required': [('call_model_id', '=', False), ('call_function', 'in', ['call_lock', 'call_lock_values'])]}"
+                />
+            </field>
+        </field>
+    </record>
+</odoo>

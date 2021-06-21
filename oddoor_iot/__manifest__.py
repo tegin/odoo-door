@@ -5,10 +5,10 @@
     "name": "Oddoor Iot",
     "summary": """
         Oddoor integration through iot""",
-    "version": "12.0.1.0.0",
+    "version": "13.0.1.0.0",
     "license": "AGPL-3",
     "author": "Creu Blanca,Odoo Community Association (OCA)",
     "website": "www.creublanca.es",
-    "depends": ["oddoor", "iot_template"],
+    "depends": ["oddoor", "iot_template_oca"],
     "data": ["data/oddoor_template.xml", "views/iot_device_input.xml"],
 }

@@ -1,13 +1,12 @@
 # Copyright 2019 Creu Blanca
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import api, models
+from odoo import models
 
 
 class IotTemplate(models.Model):
     _inherit = "iot.template"
 
-    @api.multi
     def _get_keys(self, serial):
         result = super()._get_keys(serial)
         if self == self.env.ref("oddoor_iot.oddoor_template"):

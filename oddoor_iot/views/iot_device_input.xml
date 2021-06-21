@@ -5,7 +5,7 @@
     <record model="ir.ui.view" id="iot_device_input_form_view">
         <field name="name">iot.device.input.form (in oddoor_iot)</field>
         <field name="model">iot.device.input</field>
-        <field name="inherit_id" ref="iot_input.iot_device_input_form" />
+        <field name="inherit_id" ref="iot_input_oca.iot_device_input_form" />
         <field name="arch" type="xml">
             <field name="call_function" position="after">
                 <field

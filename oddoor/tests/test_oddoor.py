@@ -3,6 +3,8 @@
 
 from datetime import timedelta
 
+from mock import patch
+from odoo.addons.oddoor.models.oddoor_key import OddoorKey
 from odoo.exceptions import ValidationError
 from odoo.fields import Datetime
 from odoo.tests.common import SavepointCase
@@ -24,6 +26,7 @@ class TestOddoor(SavepointCase):
         cls.key_2 = cls.env["oddoor.key"].create(
             {"name": "Key 2", "group_ids": [(4, cls.group_2.id)]}
         )
+        cls.partner = cls.env["res.partner"].create({"name": "Demo partner"})
 
     def test_allowed_access(self):
         self.assertTrue(
@@ -48,6 +51,25 @@ class TestOddoor(SavepointCase):
         )
         self.assertTrue(self.lock.action_ids)
         self.assertFalse(self.lock.action_ids.key_id)
+
+    def test_not_unique_key_model(self):
+        self.key_1.write(
+            {"res_model": self.partner._name, "res_id": self.partner.id}
+        )
+
+    def test_unique_key_models(self):
+        with patch.object(OddoorKey, "_get_unique_key_models") as mocked:
+            mocked.return_value = [self.partner._name]
+            self.key_1.write(
+                {"res_model": self.partner._name, "res_id": self.partner.id}
+            )
+            with self.assertRaises(ValidationError):
+                self.key_2.write(
+                    {
+                        "res_model": self.partner._name,
+                        "res_id": self.partner.id,
+                    }
+                )
 
     def test_inheritance(self):
         self.group_1.parent_ids = [(4, self.group_2.id)]
@@ -157,3 +179,29 @@ class TestOddoor(SavepointCase):
         ids = [r["id"] for r in result]
         self.assertIn(self.key_1.id, ids)
         self.assertIn(key.id, ids)
+
+    def test_wizard(self):
+        wizard_key = self.env["oddoor.key.wizard"].create(
+            {
+                "res_id": self.partner.id,
+                "res_model": self.partner._name,
+                "unique_virtual_key": "Testing Key",
+                "group_ids": [(4, self.group_1.id)],
+            }
+        )
+        wizard_key.create_key()
+        key = wizard_key.oddoor_key_id
+        self.assertEqual(key.unique_virtual_key, "Testing Key")
+        self.assertEqual(key.group_ids, self.group_1)
+        wizard_key = self.env["oddoor.key.wizard"].create(
+            {
+                "res_id": self.partner.id,
+                "res_model": self.partner._name,
+                "oddoor_key_id": key.id,
+                "unique_virtual_key": "Testing Key 2",
+                "group_ids": [(4, self.group_1.id)],
+            }
+        )
+        wizard_key.update_key()
+        key.refresh()
+        self.assertEqual(key.unique_virtual_key, "Testing Key 2")

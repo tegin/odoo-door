@@ -8,7 +8,7 @@
         <field name="inherit_id" ref="base.view_partner_form" />
         <field name="groups_id" eval="[(4, ref('oddoor.group_oddoor_user'))]" />
         <field name="arch" type="xml">
-            <button name="toggle_active" position="before">
+            <button>
                 <button
                     class="oe_stat_button"
                     name="action_view_oddoor_key"

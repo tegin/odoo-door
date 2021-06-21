@@ -1,7 +1,7 @@
 # Copyright 2019 Creu Blanca
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import api, fields, models
+from odoo import fields, models
 
 
 class OddoorLock(models.Model):
@@ -15,7 +15,6 @@ class OddoorLock(models.Model):
     action_ids = fields.One2many("oddoor.key.action", inverse_name="lock_id")
     active = fields.Boolean(default=True, required=True)
 
-    @api.multi
     def check_access_unique_virtual_key(self, unique_virtual_key):
         self.ensure_one()
         key = self.env["oddoor.key"].search(
@@ -38,7 +37,6 @@ class OddoorLock(models.Model):
             "result": "refused",
         }
 
-    @api.multi
     def check_access(self, key):
         result = self.group_ids._check_access(key)
         self.create_action(key, result)

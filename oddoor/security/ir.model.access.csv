@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_oddoor_key,access Key,model_oddoor_key,group_oddoor_view,1,0,0,0
+access_oddoor_lock,access Lock,model_oddoor_lock,group_oddoor_view,1,0,0,0
+access_oddoor_group,access Group,model_oddoor_group,group_oddoor_view,1,0,0,0
+access_oddoor_key_action,access Key Action,model_oddoor_key_action,group_oddoor_view,1,1,1,0
+manage_oddoor_key,Manage Key,model_oddoor_key,group_oddoor_user,1,1,1,0
+manage_oddoor_lock,Manage Lock,model_oddoor_lock,group_oddoor_config,1,1,1,0
+manage_oddoor_group,Manage Group,model_oddoor_group,group_oddoor_config,1,1,1,0

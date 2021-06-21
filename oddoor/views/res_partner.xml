@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2020 Creu Blanca
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record model="ir.ui.view" id="res_partner_form_view">
+        <field name="name">res.partner.form (in oddoor)</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="groups_id" eval="[(4, ref('oddoor.group_oddoor_user'))]" />
+        <field name="arch" type="xml">
+            <button>
+                <button
+                    class="oe_stat_button"
+                    name="action_view_oddoor_key"
+                    type="object"
+                    attrs="{'invisible': [('oddoor_key_count', '=', 0   )]}"
+                    icon="fa-key"
+                >
+                    <field string="Keys" name="oddoor_key_count" widget="statinfo" />
+                    <field name="oddoor_key_ids" invisible="1" />
+                </button>
+            </button>
+        </field>
+    </record>
+</odoo>

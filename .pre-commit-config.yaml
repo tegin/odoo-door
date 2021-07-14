@@ -96,3 +96,17 @@ repos:
           - id: isort
             name: isort except __init__.py
             exclude: /__init__\.py$
+    - repo: https://github.com/OCA/maintainer-tools
+      rev: master
+      hooks:
+          - id: oca-gen-addon-readme
+            args:
+                - --repo-name
+                - odoo-door
+                - --org-name
+                - tegin
+                - --branch
+                - "13.0"
+                - --addons-dir
+                - .
+          - id: oca-gen-addons-table

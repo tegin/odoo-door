@@ -4,10 +4,11 @@
 from datetime import timedelta
 
 from mock import patch
-from odoo.addons.oddoor.models.oddoor_key import OddoorKey
 from odoo.exceptions import ValidationError
 from odoo.fields import Datetime
 from odoo.tests.common import SavepointCase
+
+from ..models.oddoor_key import OddoorKey
 
 
 class TestOddoor(SavepointCase):

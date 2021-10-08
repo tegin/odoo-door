@@ -14,11 +14,11 @@ System that allows to work properly with Doors
 
 Available addons
 ----------------
-addon | version | summary
---- | --- | ---
-[oddoor](oddoor/) | 13.0.1.0.0 | Odoo Lock System for Doors
-[oddoor_employee_rfid](oddoor_employee_rfid/) | 13.0.1.0.0 | Use employee id as a oddoor key
-[oddoor_iot](oddoor_iot/) | 13.0.1.0.0 | Oddoor integration through iot
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[oddoor](oddoor/) | 13.0.1.0.0 |  | Odoo Lock System for Doors
+[oddoor_employee_rfid](oddoor_employee_rfid/) | 13.0.1.0.0 |  | Use employee id as a oddoor key
+[oddoor_iot](oddoor_iot/) | 13.0.1.0.0 |  | Oddoor integration through iot
 
 [//]: # (end addons)
 
